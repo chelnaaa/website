@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Check Out</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="assets/css/all.min.css">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<!-- main style -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	<!-- responsive -->
+	<link rel="stylesheet" href="assets/css/responsive.css">
+
+	<style>
+		/* 🔔 Efek notifikasi pop-up */
+		#notifBox {
+			position: fixed;
+			top: 30%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: white;
+			color: #333;
+			padding: 25px 40px;
+			border-radius: 15px;
+			box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+			text-align: center;
+			display: none;
+			z-index: 9999;
+		}
+		#notifBox i {
+			color: #28a745;
+			font-size: 40px;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	
+	<!-- header -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<div class="site-logo">
+							<a href="index.html">
+								<img src="assets/img/logocoklat.png" alt="">
+							</a>
+						</div>
+						<nav class="main-menu">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="about.html">About</a></li>
+								<li><a href="#">Pages</a>
+									<ul class="sub-menu">
+										<li><a href="about.html">About</a></li>
+										<li><a href="cart.html">Cart</a></li>
+										<li><a href="checkout.html">Check Out</a></li>
+										<li><a href="contact.html">Contact</a></li>
+										<li><a href="shop.html">Shop</a></li>
+									</ul>
+								</li>
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="shop.html">Shop</a></li>
+								<li>
+									<div class="header-icons">
+										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+									</div>
+								</li>
+							</ul>
+						</nav>
+						<div class="mobile-menu"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- breadcrumb -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Fresh and Organic</p>
+						<h1>Check Out Product</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- checkout section -->
+	<div class="checkout-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="checkout-accordion-wrap">
+						<div class="accordion" id="accordionExample">
+						  <div class="card single-accordion">
+						    <div class="card-header" id="headingOne">
+						      <h5 class="mb-0">
+						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne">
+						          Billing Address
+						        </button>
+						      </h5>
+						    </div>
+
+						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+						      <div class="card-body">
+						        <div class="billing-address-form">
+						        	<form id="checkoutForm">
+						        		<p><input type="text" placeholder="Name" required></p>
+						        		<p><input type="email" placeholder="Email" required></p>
+						        		<p><input type="text" placeholder="Address" required></p>
+						        		<p><input type="tel" placeholder="Phone" required></p>
+						        		<p><textarea name="bill" cols="30" rows="5" placeholder="Say Something" required></textarea></p>
+						        	</form>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4">
+					<div class="order-details-wrap">
+						<table class="order-details">
+							<thead>
+								<tr>
+									<th>Your order Details</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							<tbody id="orderBody">
+								<!-- 🧾 Data dari cart akan muncul di sini otomatis -->
+							</tbody>
+						</table>
+						<a href="#" class="boxed-btn" id="pesanSekarang">Pesan Sekarang</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 🔔 Notifikasi -->
+	<div id="notifBox">
+		<i class="fas fa-spinner fa-spin"></i>
+		<h4>Pesanan Anda sedang diproses...</h4>
+	</div>
+
+	<!-- footer -->
+	<div class="footer-area">
+		<div class="container text-center">
+			<p>© 2025 Ocean Drink | Fresh and Organic</p>
+		</div>
+	</div>
+
+	<!-- Script -->
+	<script src="assets/js/jquery-1.11.3.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- ✅ Script sudah diperbaiki -->
+	<script>
+	document.addEventListener('DOMContentLoaded', ()=>{
+
+	  const data = JSON.parse(localStorage.getItem('checkoutData') || '[]');
+	  const summary = JSON.parse(localStorage.getItem('checkoutSummary') || '{}');
+	  const tbody = document.getElementById('orderBody');
+	  const formatter = new Intl.NumberFormat('id-ID', {
+	    style: 'currency', currency: 'IDR', maximumFractionDigits: 0
+	  });
+
+	  let grand = 0;
+	  tbody.innerHTML = '';
+
+	  data.forEach(item=>{
+	    const total = item.price * item.qty;
+	    grand += total;
+	    tbody.innerHTML += `
+	      <tr>
+	        <td>${item.name} (x${item.qty})</td>
+	        <td>${formatter.format(total)}</td>
+	      </tr>`;
+	  });
+
+	  if(data.length > 0){
+	    tbody.innerHTML += `
+	      <tr><td><strong>Subtotal</strong></td><td>${formatter.format(summary.subtotal || grand)}</td></tr>
+	      <tr><td><strong>Shipping</strong></td><td>${formatter.format(summary.shipping || 5000)}</td></tr>
+	      <tr><td><strong>Total</strong></td><td><strong>${formatter.format(summary.total || grand + 5000)}</strong></td></tr>
+	    `;
+	  } else {
+	    tbody.innerHTML = '<tr><td colspan="2">Tidak ada produk di keranjang.</td></tr>';
+	  }
+
+	  // 🟢 Fungsi tombol pesan sekarang
+	  document.getElementById('pesanSekarang').addEventListener('click', function(e){
+	    e.preventDefault();
+
+	    const nama = document.querySelector('input[placeholder="Name"]').value;
+	    const email = document.querySelector('input[placeholder="Email"]').value;
+	    const alamat = document.querySelector('input[placeholder="Address"]').value;
+	    const phone = document.querySelector('input[placeholder="Phone"]').value;
+	    const pesan = document.querySelector('textarea').value;
+
+	    if(!nama || !email || !alamat || !phone || !pesan){
+	      alert('Mohon isi semua data terlebih dahulu!');
+	      return;
+	    }
+
+	    const data = JSON.parse(localStorage.getItem('checkoutData') || '[]');
+	    const summary = JSON.parse(localStorage.getItem('checkoutSummary') || '{}');
+	    let detailProduk = '';
+
+	    data.forEach(item=>{
+	      const total = item.price * item.qty;
+	      detailProduk += `- ${item.name} (x${item.qty}) = Rp${total.toLocaleString('id-ID')}\n`;
+	    });
+
+	    const text = `Halo, saya ${nama} ingin memesan produk.\n\n📍Alamat: ${alamat}\n📞No HP: ${phone}\n✉️Email: ${email}\n💬Pesan: ${pesan}\n\nProduk yang ingin dipesan:\n${detailProduk}\nSubtotal: Rp${(summary.subtotal || 0).toLocaleString('id-ID')}\nOngkir: Rp${(summary.shipping || 5000).toLocaleString('id-ID')}\nTotal: Rp${(summary.total || grand + 5000).toLocaleString('id-ID')}`;
+
+	    const noWa = "6282244101285";
+	    const url = `https://wa.me/${noWa}?text=${encodeURIComponent(text)}`;
+
+	    const notif = document.getElementById('notifBox');
+	    notif.style.display = 'block';
+	    setTimeout(() => {
+	      notif.innerHTML = '<i class="fas fa-check-circle"></i><h4>Pesanan berhasil! Membuka WhatsApp...</h4>';
+	      window.open(url, '_blank');
+	    }, 1500);
+
+	    setTimeout(() => {
+	      localStorage.removeItem('checkoutData');
+	      localStorage.removeItem('checkoutSummary');
+	      window.location.href = "index.html";
+	    }, 4000);
+	  });
+	});
+	</script>
+
+</body>
+</html>
