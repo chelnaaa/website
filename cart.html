@@ -32,13 +32,63 @@
 	<link rel="stylesheet" href="assets/css/responsive.css">
 
 	<style>
-  .cart-table th, .cart-table td { color: #ffffff; }
-  .cart-table .product-price .price { color: #ffffff; font-weight:700; }
-  .cart-table .product-total { color: #ffffff; font-weight:700; }
-  .total-table td { color: #ffffff; font-weight:700; }
-  .product-price, .product-total { text-align: center; }
-  .product-quantity input.qty { width: 80px; padding: 10px; border-radius:6px; }
+/* ============ GAYA DEFAULT (UNTUK DESKTOP) ============ */
+/* Asumsikan latar belakang total di desktop adalah GELAP, jadi teks harus PUTIH */
+.cart-table th, .cart-table td { color: #ffffff; }
+.cart-table .product-price .price { color: #ffffff; font-weight:700; }
+.cart-table .product-total { color: #ffffff; font-weight:700; }
+.total-table th, .total-table td { color: #ffffff; font-weight:700; } /* Teks Total Putih di Desktop */
+
+.product-price, .product-total { text-align: center; }
+.product-quantity input.qty { width: 80px; padding: 10px; border-radius:6px; }
+
+
+/* ============ MEDIA QUERY (UNTUK MOBILE) ============ */
+/* Saat lebar layar <= 768px (Mobile), kita timpa warna teks Total menjadi HITAM */
+@media (max-width: 768px) {
+    /* Gaya untuk mengatasi tabel horizontal scroll (yang sudah ada) */
+    .cart-table-wrap {
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+      background: inherit;
+      border-radius: inherit;
+      animation: inherit;
+    }
+
+    .cart-table {
+      min-width: 650px;
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: inherit;
+      transition: inherit;
+    }
+
+    .cart-table thead th {
+      white-space: nowrap;
+      color: #000000; /* Header tabel utama hitam di mobile */
+    }
+    
+    /* GANTI WARNA TEKS TABEL UTAMA MENJADI HITAM DI MOBILE */
+    .cart-table th, .cart-table td { color: #000000; } 
+    .cart-table .product-price .price { color: #000000; }
+    .cart-table .product-total { color: #000000; }
+
+    /* GANTI WARNA TEKS TABEL TOTAL MENJADI HITAM DI MOBILE */
+    .total-table th, .total-table td { 
+        color: #000000 !important; /* Timpa dengan warna hitam untuk mobile */
+    }
+
+}
+/* Pastikan animasi hover tetap aktif */
+.cart-table tbody tr {
+    transition: all 0.3s ease;
+}
+.cart-table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
 </style>
+
 
 </head>
 <body>
@@ -57,13 +107,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-sm-12 text-center">
 					<div class="main-menu-wrap">
-						<!-- logo -->
-						<div class="site-logo">
-							<a href="index.html">
-								<img src="assets/img/logocoklat.png" alt="">
-							</a>
-						</div>
-						<!-- logo -->
+						
 
 					<!-- header -->
 	<div class="top-header-area" id="sticker">
