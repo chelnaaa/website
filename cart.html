@@ -70,12 +70,12 @@
     }
     
     /* GANTI WARNA TEKS TABEL UTAMA MENJADI HITAM DI MOBILE */
-    .cart-table th, .cart-table td { color: #000000; } 
+    .cart-table th, .cart-table td, .coupon-section h3 { color: #000000; } 
     .cart-table .product-price .price { color: #000000; }
     .cart-table .product-total { color: #000000; }
 
     /* GANTI WARNA TEKS TABEL TOTAL MENJADI HITAM DI MOBILE */
-    .total-table th, .total-table td { 
+    .total-table th, .total-table td, .coupon-section h3{ 
         color: #000000 !important; /* Timpa dengan warna hitam untuk mobile */
     }
 
@@ -248,8 +248,8 @@
 							<table class="total-table">
 								<thead class="total-table-head">
 									<tr class="table-total-row">
-										<th>Total</th>
-										<th>Price</th>
+										<th class="product-total"style="color: black;">Total</th>
+										<th class="product-total"style="color: black;">Price</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -275,8 +275,8 @@
 							</div>
 						</div>
 
-						<div class="coupon-section">
-							<h3>Apply Coupon</h3>
+						<div class="coupon-section" >
+							<h3 style="color: #fff;">Apply Coupon</h3>
 							<div class="coupon-form-wrap">
 								<form action="index.html">
 									<p><input type="text" placeholder="Coupon"></p>
@@ -535,7 +535,5 @@ Didirikan pada 20 Agustus 2025, Ocean Drink lahir dari semangat untuk menghadirk
   });
 })();
 </script>
-
-
 </body>
 </html>
